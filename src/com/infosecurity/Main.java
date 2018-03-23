@@ -11,8 +11,11 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("view/Menu.fxml"));
+        root.setId("pane");
+        Scene scene = new Scene(root);
+        scene.getStylesheets().addAll(this.getClass().getResource("view/style.css").toExternalForm());
         primaryStage.setTitle("ZI");
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 

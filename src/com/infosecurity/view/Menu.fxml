@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
 <GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.infosecurity.controller.MainController">
    <columnConstraints>
@@ -15,13 +16,19 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <AnchorPane prefHeight="400.0" prefWidth="700.0">
+      <AnchorPane id="pane" prefHeight="400.0" prefWidth="700.0" style="-fx-background-image: url('main.jpg');">
          <children>
-            <Button layoutX="319.0" layoutY="56.0" mnemonicParsing="false" onAction="#cesarEncoder" prefHeight="35.0" prefWidth="118.0" text="Шифр Цезаря" />
-            <Button layoutX="319.0" layoutY="112.0" mnemonicParsing="false" onAction="#stackConversion" prefHeight="35.0" prefWidth="118.0" text="Перетворення драбинки" />
-            <Button layoutX="319.0" layoutY="167.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="118.0" text="Button" />
-            <Label layoutX="37.0" layoutY="39.0" prefHeight="52.0" prefWidth="229.0" text="Гринчишин Іван КІ-33" />
-            <Label layoutX="102.0" layoutY="14.0" prefHeight="35.0" prefWidth="284.0" text="                           Захист інформації" textAlignment="CENTER" />
+            <Button layoutX="319.0" layoutY="56.0" mnemonicParsing="false" onAction="#cesarEncoder" prefHeight="35.0" prefWidth="362.0" text="Лаболаторна робота№ 1: Шифр Цезаря" textAlignment="CENTER" />
+            <Button layoutX="319.0" layoutY="112.0" mnemonicParsing="false" onAction="#stackConversion" prefHeight="35.0" prefWidth="362.0" text="Лаболаторна робота №2: Перестановчий шифр" textAlignment="CENTER" />
+            <Button layoutX="319.0" layoutY="167.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="362.0" text="Button" />
+            <Label layoutX="37.0" layoutY="39.0" prefHeight="52.0" prefWidth="166.0" text="Гринчишин Іван КІ-33" textFill="#e81d1d">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <Label layoutX="94.0" layoutY="14.0" prefHeight="35.0" prefWidth="524.0" text="                           Захист інформації" textAlignment="CENTER">
+               <font>
+                  <Font size="22.0" />
+               </font></Label>
          </children>
       </AnchorPane>
    </children>

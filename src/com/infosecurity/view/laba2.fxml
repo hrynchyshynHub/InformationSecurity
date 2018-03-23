@@ -4,31 +4,21 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-
+<?import javafx.scene.layout.StackPane?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.infosecurity.controller.StackConversionController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="608.0">
          <children>
-            <TextField layoutX="14.0" layoutY="69.0" prefHeight="29.0" prefWidth="237.0" />
-            <Button onAction="#process" layoutX="265.0" layoutY="69.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="78.0" text="Обробити" />
+            <TextField fx:id="inputWord" layoutX="14.0" layoutY="69.0" prefHeight="29.0" prefWidth="237.0" />
+            <Button layoutX="457.0" layoutY="69.0" mnemonicParsing="false" onAction="#process" prefHeight="29.0" prefWidth="137.0" text="Обробити" />
             <Label layoutX="195.0" layoutY="14.0" prefHeight="29.0" prefWidth="157.0" text="Перетворення драбинки" />
             <Label layoutX="14.0" layoutY="43.0" prefHeight="17.0" prefWidth="237.0" text="Введіть повідомлення" />
-            <GridPane fx:id="gridPane" layoutX="23.0" layoutY="132.0" prefHeight="241.0" prefWidth="565.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-            </GridPane>
-            <Button onAction="#back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Назад" />
+            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="Назад" />
+            <TextField fx:id="key" layoutX="278.0" layoutY="69.0" prefHeight="29.0" prefWidth="157.0" promptText="1234" />
+            <Label layoutX="278.0" layoutY="43.0" prefHeight="25.0" prefWidth="63.0" text="Ключ" />
+            <StackPane fx:id="table" layoutX="14.0" layoutY="116.0" prefHeight="210.0" prefWidth="582.0" />
+            <Label fx:id="encodeString" layoutX="16.0" layoutY="340.0" prefHeight="52.0" prefWidth="572.0" />
          </children>
       </AnchorPane>
    </children>

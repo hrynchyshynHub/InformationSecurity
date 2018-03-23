@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -53,7 +54,8 @@ public class CesarEncoderController implements Initializable{
     }
     @FXML
     private void back(ActionEvent e) throws IOException{
-        ViewLoader viewLoader = new ViewLoader(((Node)e.getSource()).getScene());
+        Scene scene = ((Node)e.getSource()).getScene();
+        ViewLoader viewLoader = new ViewLoader(scene);
         viewLoader.addScreen("menu", FXMLLoader.load(getClass().getResource("../view/Menu.fxml")));
         viewLoader.activate("menu");
     }

@@ -13,16 +13,16 @@ public class StackConversioEncoder implements Encoder<String> {
     }
 
     @Override
-    public String encrypt(String t) {
+    public String encrypt(String inputString) {
         int[] keys = parseKey();
-        double piece = (double) t.length() / (double) keys.length;
-        int p = (int) Math.ceil(piece);
-        t = ensureString(t, p);
-        String[] words = cutWord(t, p);
-        matrix = new char[words[0].length()][keys.length];
+        double columns = (double) inputString.length() / (double) keys.length;
+        int realColumns = (int) Math.ceil(columns);
+        inputString = ensureString(inputString, realColumns);
+        String[] words = cutWord(inputString, keys.length);
+        matrix = new char[realColumns][words[0].length()];
 
-        for (int i = 0; i < keys.length; i++) {
-            fillMatrix(keys[i], words[i].toCharArray());
+        for (int i = 0; i < words.length; i++) {
+            fillMatrix(i, words[i].toCharArray());
         }
         printMartix();
         String encrtyptedString = readMatrix();
@@ -35,14 +35,11 @@ public class StackConversioEncoder implements Encoder<String> {
         return words;
     }
 
-    private String ensureString(String word, int piece) {
+    private String ensureString(String word, int col) {
         StringBuilder stringBuilder = new StringBuilder(word);
-        stringBuilder.ensureCapacity(piece * key.length());
-
-        for (int i = word.length(); i < piece * key.length(); i++) {
+        for (int i = word.length(); i < col * key.length() ; i++) {
             stringBuilder.append(" ");
         }
-
         return stringBuilder.toString();
     }
 
@@ -55,10 +52,9 @@ public class StackConversioEncoder implements Encoder<String> {
         return keySet;
     }
 
-    private void fillMatrix(int column, char[] subWord) {
-        column--; // key started from 1, array form 0!
-        for (int i = 0; i < matrix.length; i++) {
-            matrix[i][column] = subWord[i];
+    private void fillMatrix(int row, char[] subWord) {
+        for (int i = 0; i < subWord.length; i++) {
+            matrix[row][i] = subWord[i];
         }
     }
 
@@ -71,6 +67,10 @@ public class StackConversioEncoder implements Encoder<String> {
         }
     }
 
+    public char[][] getMatrix(){
+        return matrix;
+    }
+
     private StringBuilder readColumn(int column) {
         column--; // key started from 1, array form 0!
         StringBuilder sb = new StringBuilder();
@@ -80,7 +80,7 @@ public class StackConversioEncoder implements Encoder<String> {
         return sb;
     }
 
-    private String readMatrix() {
+    public String readMatrix() {
         int[] keys = parseKey();
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < keys.length; i++) {
