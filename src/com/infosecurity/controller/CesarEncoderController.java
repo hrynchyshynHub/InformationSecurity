@@ -3,11 +3,15 @@ package com.infosecurity.controller;
 import com.infosecurity.engine.laba1.CesarEncoder;
 import com.infosecurity.engine.laba1.Encoder;
 import com.infosecurity.util.Utils;
+import com.infosecurity.util.ViewLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -46,5 +50,11 @@ public class CesarEncoderController implements Initializable{
         }
 
 
+    }
+    @FXML
+    private void back(ActionEvent e) throws IOException{
+        ViewLoader viewLoader = new ViewLoader(((Node)e.getSource()).getScene());
+        viewLoader.addScreen("menu", FXMLLoader.load(getClass().getResource("../view/Menu.fxml")));
+        viewLoader.activate("menu");
     }
 }

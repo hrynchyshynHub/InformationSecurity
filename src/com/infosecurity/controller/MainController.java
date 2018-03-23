@@ -18,5 +18,12 @@ public class MainController{
         viewLoader.addScreen("cesarEncoder", FXMLLoader.load(getClass().getResource("../view/laba1.fxml")));
         viewLoader.activate("cesarEncoder");
     }
+
+    @FXML
+    private void stackConversion(ActionEvent e) throws IOException{
+        viewLoader = new ViewLoader(((Node)e.getSource()).getScene());
+        viewLoader.addScreen("stackConversion", FXMLLoader.load(getClass().getResource("../view/laba2.fxml")));
+        viewLoader.activate("stackConversion");
+    }
 }
 
