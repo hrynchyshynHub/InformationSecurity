@@ -1,6 +1,6 @@
 package com.infosecurity.engine.laba2;
 
-import com.infosecurity.engine.laba1.Encoder;
+import com.infosecurity.engine.common.Encoder;
 
 
 public class StackConversioEncoder implements Encoder<String> {

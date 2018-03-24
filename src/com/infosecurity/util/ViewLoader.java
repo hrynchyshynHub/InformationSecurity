@@ -22,6 +22,7 @@ public class ViewLoader{
     }
 
     public void activate(String name){
-        main.setRoot( screenMap.get(name) );
+        main.getStylesheets().addAll(this.getClass().getResource("../view/style.css").toExternalForm());
+        main.setRoot( screenMap.get(name));
     }
 }

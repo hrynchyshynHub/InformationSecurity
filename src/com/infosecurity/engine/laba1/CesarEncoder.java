@@ -1,5 +1,7 @@
 package com.infosecurity.engine.laba1;
 
+import com.infosecurity.engine.common.Encoder;
+
 public class CesarEncoder implements Encoder<String> {
 
     private static final String ukrAlphabetLower = "абвгґдеєжзиіїйклмнопрстуфхцшщьюя";

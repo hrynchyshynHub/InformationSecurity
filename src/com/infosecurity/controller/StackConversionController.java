@@ -1,6 +1,6 @@
 package com.infosecurity.controller;
 
-import com.infosecurity.engine.laba1.Encoder;
+import com.infosecurity.engine.common.Encoder;
 import com.infosecurity.engine.laba2.StackConversioEncoder;
 import com.infosecurity.util.Utils;
 import com.infosecurity.util.ViewLoader;

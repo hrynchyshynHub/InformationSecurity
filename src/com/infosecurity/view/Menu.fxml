@@ -18,9 +18,9 @@
    <children>
       <AnchorPane id="pane" prefHeight="400.0" prefWidth="700.0" style="-fx-background-image: url('main.jpg');">
          <children>
-            <Button layoutX="319.0" layoutY="56.0" mnemonicParsing="false" onAction="#cesarEncoder" prefHeight="35.0" prefWidth="362.0" text="Лаболаторна робота№ 1: Шифр Цезаря" textAlignment="CENTER" />
+            <Button layoutX="319.0" layoutY="56.0" mnemonicParsing="false" onAction="#cesarEncoder" prefHeight="35.0" prefWidth="362.0" text="Лаболаторна робота№1: Шифр Цезаря" textAlignment="CENTER" />
             <Button layoutX="319.0" layoutY="112.0" mnemonicParsing="false" onAction="#stackConversion" prefHeight="35.0" prefWidth="362.0" text="Лаболаторна робота №2: Перестановчий шифр" textAlignment="CENTER" />
-            <Button layoutX="319.0" layoutY="167.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="362.0" text="Button" />
+            <Button layoutX="319.0" layoutY="167.0" mnemonicParsing="false" onAction="#cesarDecoder" prefHeight="35.0" prefWidth="362.0" text="Лаболаторна робота №3: Дешифратор" />
             <Label layoutX="37.0" layoutY="39.0" prefHeight="52.0" prefWidth="166.0" text="Гринчишин Іван КІ-33" textFill="#e81d1d">
                <font>
                   <Font size="16.0" />
