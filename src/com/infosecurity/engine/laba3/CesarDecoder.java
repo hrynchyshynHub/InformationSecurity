@@ -1,27 +1,25 @@
 package com.infosecurity.engine.laba3;
 
 import com.infosecurity.engine.common.Decoder;
+
+import java.nio.charset.Charset;
 import java.util.*;
 
 public class CesarDecoder implements Decoder<String>{
 
-    private static final String englishAlphabet = "abcdefghijklmnopqrstuvwxyz";
-    private static final String englishAlphabetUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     @Override
     public String decode(String s) {
         Character e = 'e';
         // Get list of chars
-        List<Character> characters = toCharsList(s);
 
+        List<Character> characters = toCharsList(s);
         // count all letters
         Map<Character, Integer> map = countLetter(characters);
-
         // max count define 'e'
         Character mostPopular = getMaxCountLetter(map);
-
         // calculate key
-        int key = mostPopular.compareTo(e);
+        int key = Character.getNumericValue(mostPopular) - Character.getNumericValue(e);
 
         // decode string using key
         String decodeString = decode(key, s);
@@ -32,13 +30,16 @@ public class CesarDecoder implements Decoder<String>{
     private List<Character> toCharsList(String s){
         List<Character> characters = new ArrayList<>();
         for(Character c : s.toCharArray()){
-            characters.add(c);
+            if(Character.isAlphabetic(c)){
+                characters.add(c);
+            }
         }
         return characters;
     }
 
     private Map<Character, Integer> countLetter(List<Character> characters){
         Set<Character> set = new LinkedHashSet<>(characters);
+        set.remove(' ');
         Map<Character, Integer> map = new LinkedHashMap<>();
         set.stream().forEach( c -> {
             Integer sum = Math.toIntExact(characters.stream().filter(x -> x == c).count());
@@ -54,28 +55,32 @@ public class CesarDecoder implements Decoder<String>{
                 .getKey();
     }
 
+
+
     private String decode(int key, String s){
-        char[] charsArray = s.toCharArray();
         StringBuilder sb = new StringBuilder();
-        for(int i = 0 ; i < s.length(); i++){
-            int index = englishAlphabet.indexOf(charsArray[i]);
-            if(index != -1){
-                sb.append(checkInArray(index, englishAlphabet, key));
-            }else{
-                index = englishAlphabetUpper.indexOf(charsArray[i]);
-                if( index != -1){
-                    sb.append(checkInArray(index, englishAlphabetUpper, key));
-                }else {
-                    sb.append(charsArray[i]);
+        for(Character currentCharacter : s.toCharArray()){
+            if(Character.isAlphabetic(currentCharacter)){
+                System.out.print(currentCharacter + " = current char(" + Character.getNumericValue(currentCharacter) + ")  -->  ");
+                Character newCharacter = null;
+
+                int outOfAlphabeticOffset = Character.getNumericValue(currentCharacter) - key;
+
+                int offset = Character.getNumericValue(currentCharacter) - 10;
+
+                if(outOfAlphabeticOffset < 10){
+                    int modifyKey = key - offset;
+                    newCharacter = Character.forDigit(36 - modifyKey, 36);
+                }else{
+                    newCharacter = Character.forDigit(Character.getNumericValue(currentCharacter) - key, 36);
                 }
+                System.out.println(newCharacter + " = new char(" + Character.getNumericValue(newCharacter) + ")");
+                sb.append(newCharacter);
+            }else{
+                sb.append(currentCharacter);
             }
         }
         return sb.toString();
     }
 
-    private char checkInArray(int index, String array , int key){
-        index = (index - key) % array.length();
-        char encrtyptChar = array.charAt(index);
-        return encrtyptChar;
-    }
 }
